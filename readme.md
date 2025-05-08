@@ -1,4 +1,4 @@
-# 🌾 Crop Price Prediction Web App
+![image](https://github.com/user-attachments/assets/f850ed26-fdfd-466e-a28d-a7bde1429e35)# 🌾 Crop Price Prediction Web App
 
 A machine learning-powered web application to predict future crop prices based on crop type, state, month, and years. Built using **Flask**, **HTML/CSS**, and trained models in Python.
 
@@ -43,4 +43,6 @@ Displays predicted crop price based on input.
 
 📬 Contact
 For feedback or collaboration, reach out via GitHub issues or email.
+
+
 
