@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1598511720590-b3eaffd7c4ee') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .navbar a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .result-container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 500px;
+            margin: 80px auto;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .result-container h2 {
+            color: #4CAF50;
+        }
+
+        .result-container p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Agrupaiya</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="index.html">Predict Again</a>
+        <a href="#">Help</a>
+    </div>
+</div>
+
+<div class="result-container">
+    <h2>Prediction Result</h2>
+    <p id="details"></p>
+    <p id="price"></p>
+    <a href="index.html" class="back-button">Back to Form</a>
+</div>
+
+<script>
+    // Function to get query parameters
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    const crop = getQueryParam("crop");
+    const state = getQueryParam("state");
+    const month = getQueryParam("month");
+    const current = getQueryParam("current");
+    const future = getQueryParam("future");
+
+    document.getElementById("details").innerHTML = `
+        <strong>Crop:</strong> ${crop}<br>
+        <strong>State:</strong> ${state}<br>
+        <strong>Month:</strong> ${month}<br>
+        <strong>From Year:</strong> ${current} to ${future}
+    `;
+
+    // Dummy prediction logic (replace with actual ML model in backend or JS logic)
+    const predictedPrice = (Math.random() * 2000 + 1000).toFixed(2); // 1000 - 3000
+
+    document.getElementById("price").innerHTML = `<strong>Predicted Price:</strong> ₹${predictedPrice} per ton`;
+</script>
+
+</body>
+</html>
+s

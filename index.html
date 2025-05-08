@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Price Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1598511720590-b3eaffd7c4ee') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .navbar a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            width: 400px;
+            margin: 60px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Agrupaiya</h2>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Predict Price</a>
+        <a href="#">Help</a>
+    </div>
+</div>
+
+<div class="form-container">
+    <h2>Crop Price Prediction</h2>
+    <form onsubmit="predictCrop(); return false;">
+        <label>Select Crop Type:</label>
+        <select id="crop">
+            <option>Rice</option>
+            <option>Wheat</option>
+            <option>Maize</option>
+            <option>Cotton</option>
+	    <option>Sugarcane</option>
+        </select>
+
+        <label>Select State:</label>
+        <select id="state">
+            <option>Karnataka</option>
+            <option>Punjab</option>
+            <option>Maharashtra</option>
+            <option>Bihar</option>
+            <option>Uttar Pradesh</option>
+        </select>
+
+        <label>Select Month:</label>
+        <select id="month">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+
+        </select>
+
+        <label>Select Current Year:</label>
+        <input type="number" id="currentYear" value="2023" required>
+
+        <label>Select Future Year:</label>
+        <input type="number" id="futureYear" value="2025" required>
+
+        <button type="submit">Predict</button>
+    </form>
+</div>
+
+<script>
+    function predictCrop() {
+        const crop = document.getElementById("crop").value;
+        const state = document.getElementById("state").value;
+        const month = document.getElementById("month").value;
+        const year1 = document.getElementById("currentYear").value;
+        const year2 = document.getElementById("futureYear").value;
+
+        // Simulate prediction (pass data to result.html via query string)
+        const query = `?crop=${crop}&state=${state}&month=${month}&current=${year1}&future=${year2}`;
+        window.location.href = "result.html" + query;
+    }
+</script>
+
+</body>
+</html>
+
