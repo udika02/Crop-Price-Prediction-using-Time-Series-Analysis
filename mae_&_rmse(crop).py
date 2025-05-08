@@ -113,39 +113,6 @@ mae_lstm = mean_absolute_error(test, forecast_lstm)
 rmse_lstm = sqrt(mean_squared_error(test, forecast_lstm))
 print(f'LSTM MAE: {mae_lstm:.2f}, RMSE: {rmse_lstm:.2f}')
 
-from flask import Flask, request
 
-# Initialize Flask app
-app = Flask(__name__)
 
-# Forecast future
-def forecast_next_12():
-    last_seq = scaled[-step:].reshape(1, step, 1)
-    forecast_scaled = []
-    for _ in range(12):
-        pred = model.predict(last_seq)
-        forecast_scaled.append(pred[0, 0])
-        last_seq = np.append(last_seq[:, 1:, :], [[pred]], axis=1)
-    return scaler.inverse_transform(np.array(forecast_scaled).reshape(-1, 1)).flatten()
-
-@app.route('/')
-def home():
-    return '''
-    <h2>Crop Price Forecast</h2>
-    <form method="post" action="/predict">
-        <label>Crop Type:</label>
-        <input name="crop" type="text" value="Wheat"/>
-        <input type="submit"/>
-    </form>
-    '''
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    crop = request.form['crop']
-    forecast = forecast_next_12()
-    result = '<br>'.join([f'Month {i+1}: ₹{p:.2f}' for i, p in enumerate(forecast)])
-    return f"<h3>12-Month Forecast for {crop}:</h3><p>{result}</p>"
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
+  
